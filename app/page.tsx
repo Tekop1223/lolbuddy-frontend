@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { SummonerCard } from "./components/Profile/Summoner";
 import { RankCard } from "./components/Profile/Rank";
 import { RecentGamesCard } from "./components/Profile/RecentGames";
@@ -16,11 +15,11 @@ export default function Home() {
     </div>
     <div>
       <RankCard
-        tier="Gold"
-        rank="I"
-        leaguePoints={100}
+        tier="Challenger"
+        rank=""
+        leaguePoints={2432}
         wins={100}
-        losses={100}
+        losses={21}
       />
     </div>
     <div>
