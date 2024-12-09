@@ -11,6 +11,9 @@ interface RecentGamesProps {
     championId: number;
     championName: string;
     visionScore: number;
+    //datadragon
+    RunesId: number;
+    RunesName: string;
 }
 // // queueId = gametype 
 // 400 = Normal Draft Pick, 420 = Ranked Solo/Duo, 430 = Normal blind pick, 440 = Ranked Flex, 450 = ARAM,
@@ -30,6 +33,8 @@ const getGameType = (queueId: number): string => {
             return "Unknown";
     }
 }
+
+
 // // teamId = side of the map
 // 100 = blue side, 200 = red side
 

@@ -2,7 +2,14 @@ import gameData from './game_example.json';
 import { RecentGamesCard } from './RecentGames';
 import { OtherSummonersCard } from './otherSummoners';
 
-const sortByRole = (team) => {
+interface Participant {
+    teamId: number;
+    teamPosition: string;
+    riotIdGameName: string;
+    championName: string;
+}
+
+const sortByRole = (team: Participant[]): Participant[] => {
     const roleOrder = ['TOP', 'JUNGLE', 'MIDDLE', 'BOTTOM', 'SUPPORT'];
     return team.sort((a, b) => roleOrder.indexOf(a.teamPosition) - roleOrder.indexOf(b.teamPosition));
 };
@@ -26,7 +33,7 @@ const displayTeams = () => {
                 ))}
             </div>
             <div>
-                {sortedRedTeam.map((participant, index: number) => (
+                {sortedRedTeam.map((participant: Participant, index: number) => (
                     <OtherSummonersCard
                         key={index}
                         gameName={participant.riotIdGameName}
