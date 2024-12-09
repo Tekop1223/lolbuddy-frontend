@@ -10,10 +10,11 @@ interface RecentGamesProps {
     champLevel: number;
     championId: number;
     championName: string;
+    creepScore: number;
     visionScore: number;
-    //datadragon
-    RunesId: number;
-    RunesName: string;
+    // //datadragon
+    // RunesId: number;
+    // RunesName: string;
 }
 // // queueId = gametype 
 // 400 = Normal Draft Pick, 420 = Ranked Solo/Duo, 430 = Normal blind pick, 440 = Ranked Flex, 450 = ARAM,
@@ -34,6 +35,10 @@ const getGameType = (queueId: number): string => {
     }
 }
 
+const CSPerMinute = (creepScore: number, gameDuration: number): number => {
+    return creepScore / (gameDuration / 60);
+}
+
 
 // // teamId = side of the map
 // 100 = blue side, 200 = red side
@@ -46,27 +51,30 @@ const formatGameDuration = (gameDuration: number): string => {
 }
 
 
-export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists, kda, champLevel, championId, championName, visionScore}: RecentGamesProps) {
+export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists, kda, champLevel, championId, championName, visionScore, creepScore}: RecentGamesProps) {
     const gameType = getGameType(queueId);
     const formattedGameDuration = formatGameDuration(gameDuration);
+    const CSPerminute = CSPerMinute(creepScore, gameDuration);
     return (
-    <div className="p-4 m-4 bg-gray-800 shadow-md rounded-lg flex items-center space-x-4">
+    <div className="p-4 m-4 bg-container-color shadow-md rounded-lg flex items-center space-x-4">
         <div>
+            <p className="text-xl text-bold text-sky-500"> Victory</p>
             <p className="text-m text-bold text-white">{gameType}</p>
             <p className="text-sm text-gray-400 text-center">{formattedGameDuration}</p>
         </div>
         <div className="relative">
+            
             <img src={`/datadragon/14.23.1/img/champion/${championName}.png`} alt="Champion icon" className="w-16 h-16 rounded-lg"/>
             <div className="absolute bottom-0 left-0 bg-gray-700 text-gray-200 text-xs rounded px-1">
                 {champLevel}
             </div>
         </div>
         <div>
-            <h2 className="text-lg text-gray-200">{championName}</h2>
-            
-        
-            <p className="text-sm text-gray-400">K/D/A: {kills} / {deaths} / {assists}</p>
-            <p className="text-sm text-gray-400">KDA: {kda}</p>
+          
+        <h2 className="text-lg text-gray-200">{championName}</h2>
+            <p className="text-sm text-gray-400">{kills} / {deaths} / {assists}</p>
+            <p className="text-sm text-gray-400">{kda} KDA</p>
+            <p className="text-sm text-gray-400">{creepScore} CS ({CSPerminute})</p>
             <p className="text-sm text-gray-400">Vision Score: {visionScore}</p>
         </div>
     
