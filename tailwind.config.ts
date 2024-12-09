@@ -13,6 +13,7 @@ export default {
         foreground: "var(--foreground)",
         'container-color': '#3f3f3f',
         'background-color': '#2a2a2a',
+        'recentGames-color': '#1C1B1B',
       },
     },
   },

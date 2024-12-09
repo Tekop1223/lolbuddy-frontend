@@ -1,3 +1,5 @@
+
+
 interface RecentGamesProps {
     //info.
     gameDuration: number;
@@ -56,6 +58,15 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
     const formattedGameDuration = formatGameDuration(gameDuration);
     const CSPerminute = CSPerMinute(creepScore, gameDuration);
     return (
+    <div className="p-4 m-4 bg-recentGames-color shadow-md rounded-lg">
+        <div className="p-2 m-2 bg-container-color shadow-md rounded-lg flex flex-row" >
+            <div className="text-m text-bold">Match history</div>
+            <div className="text-m text-bold">All matches</div>
+            <div className="mx-5">  
+                <i className="fa-solid fa-magnifying-glass"></i>
+                <p>seach</p>
+            </div>
+        </div>
     <div className="p-4 m-4 bg-container-color shadow-md rounded-lg flex items-center space-x-4">
         <div>
             <p className="text-xl text-bold text-sky-500"> Victory</p>
@@ -65,7 +76,7 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
         <div className="relative">
             
             <img src={`/datadragon/14.23.1/img/champion/${championName}.png`} alt="Champion icon" className="w-16 h-16 rounded-lg"/>
-            <div className="absolute bottom-0 left-0 bg-gray-700 text-gray-200 text-xs rounded px-1">
+            <div className="absolute bottom-0 left-0 bg-black text-gray-200 text-xs rounded px-1">
                 {champLevel}
             </div>
         </div>
@@ -78,6 +89,7 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
             <p className="text-sm text-gray-400">Vision Score: {visionScore}</p>
         </div>
     
+    </div>
     </div>
     );
 }
