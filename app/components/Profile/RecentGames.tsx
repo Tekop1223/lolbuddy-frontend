@@ -62,10 +62,11 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
         <div className="p-2 m-2 bg-container-color shadow-md rounded-lg flex flex-row" >
             <div className="text-m text-bold">Match history</div>
             <div className="text-m text-bold">All matches</div>
-            <div className="mx-5">  
-                <i className="fa-solid fa-magnifying-glass"></i>
-                <p>seach</p>
-            </div>
+        </div>
+        <div>
+            <div></div>
+            <div>% WR</div>
+            <div>KDA</div>
         </div>
     <div className="p-4 m-4 bg-container-color shadow-md rounded-lg flex items-center space-x-4">
         <div>
@@ -80,6 +81,14 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
                 {champLevel}
             </div>
         </div>
+        <div>
+                <div>spell1</div>
+                <div>spell2</div>
+            </div>
+            <div>
+                <div>rune1</div>
+                <div>rune2</div>
+            </div>
         <div>
           
         <h2 className="text-lg text-gray-200">{championName}</h2>
