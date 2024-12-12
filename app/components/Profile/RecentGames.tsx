@@ -15,8 +15,8 @@ interface RecentGamesProps {
     creepScore: number;
     visionScore: number;
     // //datadragon
-    // RunesId: number;
-    // RunesName: string;
+    RunesName: string;
+    SecRunesName: string;
 }
 // // queueId = gametype 
 // 400 = Normal Draft Pick, 420 = Ranked Solo/Duo, 430 = Normal blind pick, 440 = Ranked Flex, 450 = ARAM,
@@ -38,7 +38,7 @@ const getGameType = (queueId: number): string => {
 }
 
 const CSPerMinute = (creepScore: number, gameDuration: number): number => {
-    return creepScore / (gameDuration / 60);
+    return Math.round((creepScore / (gameDuration / 60)) * 100) / 100;
 }
 
 
@@ -53,7 +53,7 @@ const formatGameDuration = (gameDuration: number): string => {
 }
 
 
-export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists, kda, champLevel, championId, championName, visionScore, creepScore}: RecentGamesProps) {
+export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists, kda, champLevel, championId, championName, visionScore, creepScore, RunesName, SecRunesName}: RecentGamesProps) {
     const gameType = getGameType(queueId);
     const formattedGameDuration = formatGameDuration(gameDuration);
     const CSPerminute = CSPerMinute(creepScore, gameDuration);
@@ -61,12 +61,6 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
     <div className="p-4 m-4 bg-recentGames-color shadow-md rounded-lg">
         <div className="p-2 m-2 bg-container-color shadow-md rounded-lg flex flex-row" >
             <div className="text-m text-bold">Match history</div>
-            <div className="text-m text-bold">All matches</div>
-        </div>
-        <div>
-            <div></div>
-            <div>% WR</div>
-            <div>KDA</div>
         </div>
     <div className="p-4 m-4 bg-container-color shadow-md rounded-lg flex items-center space-x-4">
         <div>
@@ -75,22 +69,13 @@ export function RecentGamesCard ({gameDuration, queueId, kills, deaths, assists,
             <p className="text-sm text-gray-400 text-center">{formattedGameDuration}</p>
         </div>
         <div className="relative">
-            
+          
             <img src={`/datadragon/14.23.1/img/champion/${championName}.png`} alt="Champion icon" className="w-16 h-16 rounded-lg"/>
             <div className="absolute bottom-0 left-0 bg-black text-gray-200 text-xs rounded px-1">
                 {champLevel}
             </div>
         </div>
-        <div>
-                <div>spell1</div>
-                <div>spell2</div>
-            </div>
-            <div>
-                <div>rune1</div>
-                <div>rune2</div>
-            </div>
-        <div>
-          
+        <div>      
         <h2 className="text-lg text-gray-200">{championName}</h2>
             <p className="text-sm text-gray-400">{kills} / {deaths} / {assists}</p>
             <p className="text-sm text-gray-400">{kda} KDA</p>

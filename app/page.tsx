@@ -36,6 +36,11 @@ export default function Home() {
                       championId={48}
                       championName="Trundle"
                       visionScore={420}
+                      creepScore={420}
+                      RunesName="LethalTempo"
+                      SecRunesName="Resolve"
+                    
+
                   />
               </div>
           </div>
